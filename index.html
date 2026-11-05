@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="lo">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ໄວລຸ້ນຟັງທັມ - ອ່ານໜັງສື ແລະ ຟັງທັມມະ</title>
+    <meta name="description" content="ຕະຖາຄະເຕ ເອກັນຕະຄະໂຕ ອະພິປະສັນໂນ - ອ່ານໜັງສືທັມມະ ແລະ ຟັງສຽງອ່ານພາສາລາວ">
+    <meta name="keywords" content="ພຸດທະວະຈະນະ,bhuddha,ໄວລຸ້ນຟັງທັມ,listenBuddhist,ວັດປ່າວິໂມກຊໍາປັກແຮດ">
+    <meta name="theme-color" content="#7c2d12">
+    <link href="favicon.ico" rel="icon" title="icon" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="ໄວລຸ້ນຟັງທັມ">
+    <meta property="og:description" content="ອ່ານໜັງສືທັມມະພາສາລາວ ແລະ ຟັງສຽງອ່ານໂດຍບໍ່ຕ້ອງດາວໂຫຼດ">
+    <meta property="og:image" content="img/n3.jpg">
+    <meta property="og:url" content="https://listenbuddha.github.io/">
+    <meta property="og:type" content="website">
+
+    <!-- Google Fonts (Phetsarath / Noto Serif Lao style) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Lao:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dhamma: {
+                            50: '#fffbeb',
+                            100: '#fef3c7',
+                            200: '#fde68a',
+                            500: '#d97706',
+                            600: '#b45309',
+                            700: '#7c2d12',
+                            800: '#991b1b',
+                            900: '#451a03',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Noto Sans Lao"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Noto Sans Lao', sans-serif;
+            background-color: #fdfbf7;
+            color: #292524;
+        }
+
+        /* Line Clamp Utilities */
+        .line-clamp-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .line-clamp-3 {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #d97706;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #b45309;
+        }
+
+        /* Modal Smooth Transitions */
+        .modal-backdrop {
+            transition: opacity 0.3s ease-in-out;
+        }
+        .modal-content {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        /* Pulse glow animation for active play button */
+        @keyframes pulse-gold {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(217, 119, 6, 0.4); }
+            50% { box-shadow: 0 0 0 10px rgba(217, 119, 6, 0); }
+        }
+        .pulse-gold {
+            animation: pulse-gold 2s infinite;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col pb-28 md:pb-24">
+
+    <!-- Header & Navigation -->
+    <header class="sticky top-0 z-30 bg-dhamma-900 text-white shadow-md border-b border-dhamma-600/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <a href="#" class="flex items-center space-x-3 group">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-dhamma-500 to-amber-300 flex items-center justify-center text-dhamma-900 font-bold text-xl shadow-lg group-hover:scale-105 transition-transform">
+                        <i class="fa-solid fa-dharmachakra"></i>
+                    </div>
+                    <div>
+                        <span class="text-xl font-bold tracking-wide text-amber-100">ໄວລຸ້ນຟັງທັມ</span>
+                        <span class="text-xs block text-amber-300/80 -mt-1 font-light">ອ່ານ & ຟັງ ທັມມະພາສາລາວ</span>
+                    </div>
+                </a>
+
+                <!-- Quick Social Navigation -->
+                <div class="hidden sm:flex items-center space-x-3 text-sm">
+                    <a href="https://www.facebook.com/listenBuddhist" target="_blank" rel="noopener" class="flex items-center space-x-1 px-3 py-1.5 rounded-full bg-blue-600/80 hover:bg-blue-600 text-white transition">
+                        <i class="fa-brands fa-facebook"></i>
+                        <span>Facebook</span>
+                    </a>
+                    <a href="https://www.youtube.com/@listenbuddha" target="_blank" rel="noopener" class="flex items-center space-x-1 px-3 py-1.5 rounded-full bg-red-600/80 hover:bg-red-600 text-white transition">
+                        <i class="fa-brands fa-youtube"></i>
+                        <span>YouTube</span>
+                    </a>
+                    <a href="https://www.tiktok.com/@listenbuddha" target="_blank" rel="noopener" class="flex items-center space-x-1 px-3 py-1.5 rounded-full bg-stone-800 hover:bg-black text-white transition">
+                        <i class="fa-brands fa-tiktok"></i>
+                        <span>TikTok</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner / Dhamma Quote -->
+    <section class="bg-gradient-to-b from-dhamma-900 to-dhamma-800 text-amber-100 py-8 px-4 sm:px-6 shadow-inner border-b border-dhamma-700">
+        <div class="max-w-4xl mx-auto text-center space-y-3">
+            <div class="inline-block p-2 rounded-full bg-dhamma-700/50 text-amber-300 mb-1">
+                <i class="fa-solid fa-quote-left text-xl"></i>
+            </div>
+            <p class="text-base sm:text-lg font-light leading-relaxed italic text-amber-100/90">
+                "ອານົນ! ທັມກໍດີ ວິັນັຍກໍດີ ທີ່ເຮົາ (ຕະຖາຄົດ) ສະແດງແລ້ວ ບັນຍັດແລ້ວ ແກ່ພວກເຈົ້າທັງຫຼາຍ ທັມວິນັຍນັ້ນ ຈັກເປັນ ສາສະດາຂອງພວກເຈົ້າທັງຫຼາຍ ໂດຍການລ່ວງໄປແຫ່ງເຮົາ"
+            </p>
+            <div class="text-xs text-amber-300/70 pt-1 font-medium">— ພຸດທະພົຈນ໌</div>
+        </div>
+    </section>
+
+    <!-- Main Content Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow w-full">
+
+        <!-- Search & Filter Controls -->
+        <div class="mb-8 space-y-4">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                
+                <!-- Search Box -->
+                <div class="relative flex-1 max-w-lg">
+                    <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-dhamma-600">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                    <input type="text" id="searchInput" placeholder="ຄົ້ນຫາຊື່ປຶ້ມ, ສຽງອ່ານ, ຫຼື ຫົວຂໍ້ທັມມະ..." 
+                        class="w-full pl-10 pr-10 py-3 bg-white border border-stone-200 rounded-2xl shadow-sm focus:outline-none focus:ring-2 focus:ring-dhamma-500 focus:border-transparent text-sm transition">
+                    <button id="clearSearch" class="hidden absolute inset-y-0 right-0 pr-3 flex items-center text-stone-400 hover:text-stone-600">
+                        <i class="fa-solid fa-circle-xmark"></i>
+                    </button>
+                </div>
+
+                <!-- Category Tabs -->
+                <div class="flex flex-wrap items-center gap-2" id="filterContainer">
+                    <button data-filter="all" class="filter-btn active px-4 py-2 rounded-xl text-sm font-medium transition bg-dhamma-700 text-white shadow-sm">
+                        <i class="fa-solid fa-border-all mr-1.5"></i>ທັງໝົດ
+                    </button>
+                    <button data-filter="pdf" class="filter-btn px-4 py-2 rounded-xl text-sm font-medium transition bg-white text-stone-700 hover:bg-stone-100 border border-stone-200">
+                        <i class="fa-solid fa-file-pdf mr-1.5 text-red-600"></i>ປຶ້ມອ່ານ (PDF)
+                    </button>
+                    <button data-filter="audio" class="filter-btn px-4 py-2 rounded-xl text-sm font-medium transition bg-white text-stone-700 hover:bg-stone-100 border border-stone-200">
+                        <i class="fa-solid fa-headphones mr-1.5 text-amber-600"></i>ສຽງອ່ານ (MP3)
+                    </button>
+                    <button data-filter="link" class="filter-btn px-4 py-2 rounded-xl text-sm font-medium transition bg-white text-stone-700 hover:bg-stone-100 border border-stone-200">
+                        <i class="fa-solid fa-link mr-1.5 text-blue-600"></i>ລິ້ງຄ໌
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Result Counter -->
+            <div class="text-xs text-stone-500 pl-1">
+                ສະແດງຜົນ: <span id="itemCount" class="font-bold text-dhamma-700">0</span> ລາຍການ
+            </div>
+        </div>
+
+        <!-- Media Grid -->
+        <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <!-- Dynamic Content loaded here by JS -->
+        </div>
+
+        <!-- Empty State -->
+        <div id="emptyState" class="hidden py-16 text-center space-y-3">
+            <div class="w-16 h-16 bg-amber-100 text-dhamma-600 rounded-full flex items-center justify-center mx-auto text-2xl">
+                <i class="fa-solid fa-book-open"></i>
+            </div>
+            <h3 class="text-lg font-semibold text-stone-700">ບໍ່ພົບຂໍ້ມູນທີ່ທ່ານຄົ້ນຫາ</h3>
+            <p class="text-sm text-stone-500">ກະລຸນາລອງຄົ້ນຫາດ້ວຍຄຳສັບອື່ນ ຫຼື ປ່ຽນໝວດໝູ່</p>
+        </div>
+    </main>
+
+    <!-- Social Media Mobile Footer Bar -->
+    <div class="sm:hidden bg-stone-900 text-stone-300 py-3 px-4 border-t border-stone-800">
+        <p class="text-xs text-center mb-2 font-medium text-stone-400">ຕິດຕາມ ໄວລຸ້ນຟັງທັມ ຜ່ານໂຊຊຽວ</p>
+        <div class="flex justify-center space-x-3 text-xs">
+            <a href="https://www.facebook.com/listenBuddhist" target="_blank" class="flex-1 py-1.5 bg-blue-600 text-white rounded-lg text-center font-medium">
+                <i class="fa-brands fa-facebook mr-1"></i>Facebook
+            </a>
+            <a href="https://www.youtube.com/@listenbuddha" target="_blank" class="flex-1 py-1.5 bg-red-600 text-white rounded-lg text-center font-medium">
+                <i class="fa-brands fa-youtube mr-1"></i>YouTube
+            </a>
+            <a href="https://www.tiktok.com/@listenbuddha" target="_blank" class="flex-1 py-1.5 bg-stone-800 text-white rounded-lg text-center font-medium border border-stone-700">
+                <i class="fa-brands fa-tiktok mr-1"></i>TikTok
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Footer -->
+    <footer class="bg-dhamma-900 text-amber-100/80 py-8 border-t border-dhamma-800 text-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-3">
+            <div class="flex items-center justify-center space-x-2 text-amber-400">
+                <i class="fa-solid fa-hands-praying"></i>
+                <span class="font-semibold text-amber-200">ຂອບໃຈໜັງສືຈາກວັດປ່າວິໂມກຊໍາປັກແຮດ</span>
+                <i class="fa-solid fa-hands-praying"></i>
+            </div>
+            <p class="text-xs text-amber-200/70 max-w-xl mx-auto">
+                ເວັບໄຊ໌ນີ້ສ້າງຂຶ້ນເພື່ອແຈກໜັງສື ແລະ ສຽງອ່ານທັມມະ ເພື່ອເປັນທັມມະທານ ບໍ່ມີຈຸດປະສົງເພື່ອການຄ້າ.
+            </p>
+            <div class="pt-2 text-xs text-stone-400 flex flex-col sm:flex-row justify-center items-center gap-2">
+                <span><i class="fa-regular fa-envelope mr-1"></i> phoupaserth.blog@gmail.com</span>
+                <span class="hidden sm:inline">•</span>
+                <span>Version 2.0 (Modern Edition)</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- STICKY AUDIO PLAYER -->
+    <div id="stickyAudioPlayer" class="fixed bottom-0 inset-x-0 bg-stone-900 border-t border-dhamma-600/50 shadow-2xl z-40 transform translate-y-full transition-transform duration-300 ease-in-out text-white">
+        <div class="max-w-7xl mx-auto px-4 py-2.5 sm:py-3 flex flex-col sm:flex-row items-center justify-between gap-2 sm:gap-4">
+            
+            <!-- Audio Track Meta -->
+            <div class="flex items-center space-x-3 w-full sm:w-1/3 min-w-0">
+                <div class="relative w-11 h-11 rounded-lg bg-stone-800 overflow-hidden flex-shrink-0 border border-stone-700">
+                    <img id="playerImg" src="img/n3.jpg" alt="Cover" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/100x100/7c2d12/ffffff?text=Dhamma'">
+                    <div id="playerSpinner" class="hidden absolute inset-0 bg-black/50 flex items-center justify-center">
+                        <i class="fa-solid fa-circle-notch fa-spin text-amber-400 text-sm"></i>
+                    </div>
+                </div>
+                <div class="min-w-0 flex-1">
+                    <h4 id="playerTitle" class="text-sm font-semibold text-amber-200 truncate">ກະລຸນາເລືອກສຽງອ່ານ...</h4>
+                    <p id="playerSubtitle" class="text-xs text-stone-400 truncate">ໄວລຸ້ນຟັງທັມ</p>
+                </div>
+                <!-- Close Player Button -->
+                <button id="closePlayerBtn" class="sm:hidden text-stone-400 hover:text-white p-1">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Controls & Progress -->
+            <div class="flex flex-col items-center w-full sm:w-1/2 max-w-xl space-y-1">
+                <div class="flex items-center space-x-4">
+                    <button id="rewindBtn" class="text-stone-400 hover:text-amber-300 transition text-sm" title="ຖອຍຫຼັງ 10 ວິນາທີ">
+                        <i class="fa-solid fa-rotate-left"></i>
+                    </button>
+                    <button id="playPauseBtn" class="w-10 h-10 rounded-full bg-dhamma-500 hover:bg-dhamma-600 text-stone-900 flex items-center justify-center font-bold transition shadow-md">
+                        <i class="fa-solid fa-play text-sm"></i>
+                    </button>
+                    <button id="forwardBtn" class="text-stone-400 hover:text-amber-300 transition text-sm" title="ໄປໜ້າ 10 ວິນາທີ">
+                        <i class="fa-solid fa-rotate-right"></i>
+                    </button>
+                </div>
+
+                <!-- Progress Bar -->
+                <div class="w-full flex items-center space-x-2 text-xs text-stone-400 font-mono">
+                    <span id="currentTime">00:00</span>
+                    <input type="range" id="seekSlider" min="0" max="100" value="0" 
+                        class="w-full h-1.5 bg-stone-700 rounded-lg appearance-none cursor-pointer accent-dhamma-500">
+                    <span id="durationTime">00:00</span>
+                </div>
+            </div>
+
+            <!-- Volume & Actions -->
+            <div class="hidden sm:flex items-center justify-end space-x-3 w-1/3 text-stone-400 text-sm">
+                <div class="flex items-center space-x-2">
+                    <button id="muteBtn" class="hover:text-amber-300">
+                        <i class="fa-solid fa-volume-high"></i>
+                    </button>
+                    <input type="range" id="volumeSlider" min="0" max="1" step="0.05" value="1" 
+                        class="w-20 h-1 bg-stone-700 rounded-lg appearance-none cursor-pointer accent-dhamma-500">
+                </div>
+                <button id="closePlayerDesktopBtn" class="hover:text-white p-1 ml-2" title="ປິດເຄື່ອງຫຼິ້ນ">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+        </div>
+
+        <audio id="mainAudio" class="hidden"></audio>
+    </div>
+
+    <!-- IN-APP PDF / CONTENT READER MODAL -->
+    <div id="readerModal" class="fixed inset-0 z-50 hidden flex flex-col bg-stone-950/90 backdrop-blur-md">
+        <!-- Modal Top Bar -->
+        <div class="bg-stone-900 text-white px-4 py-3 flex items-center justify-between border-b border-stone-800 shadow-md">
+            <div class="flex items-center space-x-3 min-w-0">
+                <div class="w-8 h-8 rounded bg-red-900/80 text-red-300 flex items-center justify-center font-bold text-xs flex-shrink-0">
+                    <i class="fa-solid fa-file-pdf"></i>
+                </div>
+                <div class="min-w-0">
+                    <h3 id="modalTitle" class="text-sm sm:text-base font-semibold text-amber-100 truncate">ຊື່ປຶ້ມທັມມະ</h3>
+                    <p class="text-xs text-stone-400 hidden sm:block">ອ່ານຜ່ານເວັບໄຊ໌ແບບບໍ່ຕ້ອງດາວໂຫຼດ</p>
+                </div>
+            </div>
+
+            <!-- Modal Action Buttons -->
+            <div class="flex items-center space-x-2">
+                <a id="modalExternalLink" href="#" target="_blank" class="p-2 text-stone-300 hover:text-amber-300 hover:bg-stone-800 rounded-lg text-xs flex items-center space-x-1 transition" title="ເປີດໃນແທັບໃໝ່">
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    <span class="hidden sm:inline">ເປີດໃນແທັບໃໝ່</span>
+                </a>
+                <button id="modalFullscreenBtn" class="p-2 text-stone-300 hover:text-amber-300 hover:bg-stone-800 rounded-lg text-sm transition" title="ຂະຫຍາຍເຕັມຈໍ">
+                    <i class="fa-solid fa-expand"></i>
+                </button>
+                <button id="closeModalBtn" class="p-2 text-stone-300 hover:text-white hover:bg-red-900/50 rounded-lg text-sm transition ml-2">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Modal Viewer Area -->
+        <div class="flex-1 relative bg-stone-900 overflow-hidden flex flex-col">
+            <!-- Loading Overlay -->
+            <div id="modalLoading" class="absolute inset-0 bg-stone-900 flex flex-col items-center justify-center z-10 text-amber-200">
+                <i class="fa-solid fa-circle-notch fa-spin text-3xl mb-3 text-dhamma-500"></i>
+                <p class="text-sm font-medium">ກຳລັງໂຫຼດປຶ້ມ...</p>
+                <p class="text-xs text-stone-400 mt-1">ກະລຸນາລໍຖ້າຈັກຄູ່</p>
+            </div>
+
+            <!-- PDF Container / Object -->
+            <iframe id="pdfFrame" class="w-full h-full border-0 bg-stone-800" src="" title="PDF Viewer"></iframe>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Data Array - 18 Items preserved from user JS
+        const products = [
+            {
+                id: 17,
+                imageSrc: "img/n6.jpg",
+                name: "ອິທັປປັຈຈະຍະຕາ ແລະ ປະຕິຈຈະສະມຸປບາທ",
+                link: "https://www.facebook.com/listenBuddhist/posts/pfbid02nAZxc4Cdo3imTVbGoK6qTtZoghYoFrneySxRngzxLrzvsqbpCNb7R8kVdQZUYinCl",
+                discription: "ອິທັປປັຈຈະຍະຕາ ແລະ ປະຕິຈຈະສະມຸປບາທ ແປລາວ ປັນຈະເວຣະພະຍະສູຕຣ. 13/57/41.",
+                type: ""
+            },
+            {
+                id: 16,
+                imageSrc: "img/n3.jpg",
+                name: "ສຽງອ່ານ ອິທັປປັຈຈະຍະຕາ ແລະ ປະຕິຈຈະສະມຸປບາທ",
+                link: "mp3/01.mp3",
+                discription: "ສຽງອ່ານ ອິທັປປັຈຈະຍະຕາ ແລະ ປະຕິຈຈະສະມຸປບາທ ຈາກ ໄວລຸ້ນຟັງທັມ",
+                type: "audio/mpeg"
+            },
+            {
+                id: 15,
+                imageSrc: "img/n4.jpg",
+                name: "ສຽງອ່ານ ອະຣິຍະສັຈ 4 (ວ່າດ້ວຍຄວາມຈິງອັນປະເສີຖ 4)",
+                link: "mp3/02.mp3",
+                discription: "ສຽງອ່ານ ອະຣິຍະສັຈ 4 (ວ່າດ້ວຍຄວາມຈິງອັນປະເສີຖ 4) ຈາກ ໄວລຸ້ນຟັງທັມ",
+                type: "audio/mpeg"
+            },
+            {
+                id: 14,
+                imageSrc: "img/n5.jpg",
+                name: "ສຽງອ່ານ ການຕອບແທນບຸນຄຸນ ມານດາ ບິດາ ຢ່າງສູງສຸດ",
+                link: "mp3/03.mp3",
+                discription: "ສຽງອ່ານ ການຕອບແທນບຸນຄຸນ ມານດາ ບິດາ ຢ່າງສູງສຸດ ຈາກ ໄວລຸ້ນຟັງທັມ",
+                type: "audio/mpeg"
+            },
+            {
+                id: 12,
+                imageSrc: "img/n1.jpg",
+                name: "ພຸດທະປະວັດ ຈາກພຣະໂອຖະ",
+                link: "pdf/12.pdf",
+                discription: "ພຸດທະທາສພິກຂຸ ແປ ແລະ ລວບລວມຈາກພຣະໄຕຣປິດົກພາສາບາລີ",
+                type: "application/pdf"
+            },
+            {
+                id: 13,
+                imageSrc: "img/n2.jpg",
+                name: "ອະຣິຍະສັຈ ຈາກພຣະໂອຖະ ພາກປາຍ",
+                link: "pdf/13.pdf",
+                discription: "ຄະນະຜູ້ແປແລະກວດແກ້ເປັນພາສາລາວວັດປ່າວິໂມກຊໍາປັກແຮດ",
+                type: "application/pdf"
+            },
+            {
+                id: 0,
+                imageSrc: "img/0.jpg",
+                name: "ຄວາມກະຕັນຍູກະຕະເວທີ",
+                link: "pdf/0.pdf",
+                discription: "ຜູ້ອອກແບບ ແລະ ຮຽບຮຽງ ໂດຍ: ພຣະອາຈາຣຍ໌ ວ. ວົງແສງສີ",
+                type: "application/pdf"
+            },
+            {
+                id: 1,
+                imageSrc: "img/1.jpg",
+                name: "ຄະຣາວາສຊັ້ນເລີດ",
+                link: "pdf/1.pdf",
+                discription: "ໜັງສືຈາກພຸດທະພົຈນ໌ ຄະຣາວາສຊັ້ນເລີດ",
+                type: "application/pdf"
+            },
+            {
+                id: 2,
+                imageSrc: "img/2.jpg",
+                name: "ຄູ່ມືການຈະເຣີນເມຕຕາ",
+                link: "pdf/2.pdf",
+                discription: "ຜູ້ອອກແບບ ແລະ ຮຽບຮຽງ ໂດຍ: ພຣະອາຈາຣຍ໌ ວ. ວົງແສງສີ",
+                type: "application/pdf"
+            },
+            {
+                id: 3,
+                imageSrc: "img/3.jpg",
+                name: "ຄູ່ມືໂສດາບັນ",
+                link: "pdf/3.pdf",
+                discription: "ພຸດທະວະຈະນະ ຄູ່ມືໂສດາບັນ",
+                type: "application/pdf"
+            },
+            {
+                id: 4,
+                imageSrc: "img/4.jpg",
+                name: "ສະຕິປັຕຖານ",
+                link: "pdf/4.pdf",
+                discription: "ຜູ້ອອກແບບ ແລະ ຮຽບຮຽງ ໂດຍ: ພຣະອາຈາຣຍ໌ ວ. ວົງແສງສີ",
+                type: "application/pdf"
+            },
+            {
+                id: 5,
+                imageSrc: "img/5.jpg",
+                name: "ສະຣະນະຂອງຊາວພຸທ",
+                link: "pdf/5.pdf",
+                discription: "ຜູ້ອອກແບບ ແລະ ຮຽບຮຽງ ໂດຍ: ພຣະອາຈາຣຍ໌ ວ. ວົງແສງສີ",
+                type: "application/pdf"
+            },
+            {
+                id: 6,
+                imageSrc: "img/6.jpg",
+                name: "ສາທະຍາຍທັມ",
+                link: "pdf/6.pdf",
+                discription: "ປຶ້ມຄູ່ມືສາທະຍາຍທັມ ຮິບໂຮມໂດຍ ພຣະອາຈາຣຍ໌ ພູມ ເດຊວົງສາ",
+                type: "application/pdf"
+            },
+            {
+                id: 7,
+                imageSrc: "img/7.jpg",
+                name: "ທານ",
+                link: "pdf/7.pdf",
+                discription: "ໜັງສືຈາກພຸດທະພົຈນ໌ ທານ",
+                type: "application/pdf"
+            },
+            {
+                id: 8,
+                imageSrc: "img/8.jpg",
+                name: "ປະຣິນຍາໃນອະຣິຍະວິນັຍ",
+                link: "pdf/8.pdf",
+                discription: "THE WORD OF THE BUDDHA ປະຣິນຍາໃນອະຣິຍະວິນັຍ",
+                type: "application/pdf"
+            },
+            {
+                id: 9,
+                imageSrc: "img/9.jpg",
+                name: "ພຸດທະວະຈະນະ(ໂດຍພາບລວມ)",
+                link: "pdf/9.pdf",
+                discription: "ພຸດທະວະຈະນະ(ໂດຍພາບລວມ) ພາສາລາວ",
+                type: "application/pdf"
+            },
+            {
+                id: 10,
+                imageSrc: "img/10.jpg",
+                name: "ອານາປານະສະຕິ",
+                link: "pdf/10.pdf",
+                discription: "ປຶ້ມຄຳສອນຈາກພຸດທະພົຈນ໌ ອານາປານະສະຕິ",
+                type: "application/pdf"
+            },
+            {
+                id: 11,
+                imageSrc: "img/11.jpg",
+                name: "ແກ້ກັມ",
+                link: "pdf/11.pdf",
+                discription: "ປຶ້ມຄຳສອນຈາກພຸດທະພົຈນ໌ ແກ້ກັມ",
+                type: "application/pdf"
+            }
+        ];
+
+        // State variables
+        let currentFilter = 'all';
+        let searchQuery = '';
+        let currentAudioId = null;
+
+        // DOM Elements
+        const productGrid = document.getElementById('productGrid');
+        const searchInput = document.getElementById('searchInput');
+        const clearSearchBtn = document.getElementById('clearSearch');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const itemCountEl = document.getElementById('itemCount');
+        const emptyState = document.getElementById('emptyState');
+
+        // Audio Player Elements
+        const stickyAudioPlayer = document.getElementById('stickyAudioPlayer');
+        const mainAudio = document.getElementById('mainAudio');
+        const playPauseBtn = document.getElementById('playPauseBtn');
+        const rewindBtn = document.getElementById('rewindBtn');
+        const forwardBtn = document.getElementById('forwardBtn');
+        const seekSlider = document.getElementById('seekSlider');
+        const currentTimeEl = document.getElementById('currentTime');
+        const durationTimeEl = document.getElementById('durationTime');
+        const volumeSlider = document.getElementById('volumeSlider');
+        const muteBtn = document.getElementById('muteBtn');
+        const playerImg = document.getElementById('playerImg');
+        const playerTitle = document.getElementById('playerTitle');
+        const playerSubtitle = document.getElementById('playerSubtitle');
+        const closePlayerBtn = document.getElementById('closePlayerBtn');
+        const closePlayerDesktopBtn = document.getElementById('closePlayerDesktopBtn');
+
+        // Modal Elements
+        const readerModal = document.getElementById('readerModal');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+        const modalTitle = document.getElementById('modalTitle');
+        const pdfFrame = document.getElementById('pdfFrame');
+        const modalLoading = document.getElementById('modalLoading');
+        const modalExternalLink = document.getElementById('modalExternalLink');
+        const modalFullscreenBtn = document.getElementById('modalFullscreenBtn');
+
+        // Helper: Get Badge Info by Type
+        function getTypeBadge(type) {
+            if (type === 'application/pdf') {
+                return `<span class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-red-100 text-red-700 flex items-center space-x-1">
+                            <i class="fa-solid fa-file-pdf"></i><span>ປຶ້ມ PDF</span>
+                        </span>`;
+            } else if (type === 'audio/mpeg') {
+                return `<span class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-amber-100 text-amber-800 flex items-center space-x-1">
+                            <i class="fa-solid fa-headphones"></i><span>ສຽງອ່ານ MP3</span>
+                        </span>`;
+            } else {
+                return `<span class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-blue-100 text-blue-700 flex items-center space-x-1">
+                            <i class="fa-solid fa-link"></i><span>ລິ້ງຄ໌</span>
+                        </span>`;
+            }
+        }
+
+        // Render Product Cards
+        function renderProducts() {
+            productGrid.innerHTML = '';
+
+            const filtered = products.filter(item => {
+                // Filter by Category
+                let matchesCategory = true;
+                if (currentFilter === 'pdf') matchesCategory = item.type === 'application/pdf';
+                else if (currentFilter === 'audio') matchesCategory = item.type === 'audio/mpeg';
+                else if (currentFilter === 'link') matchesCategory = item.type === '';
+
+                // Filter by Search Query
+                const query = searchQuery.toLowerCase().trim();
+                const matchesSearch = item.name.toLowerCase().includes(query) || 
+                                      item.discription.toLowerCase().includes(query);
+
+                return matchesCategory && matchesSearch;
+            });
+
+            itemCountEl.textContent = filtered.length;
+
+            if (filtered.length === 0) {
+                emptyState.classList.remove('hidden');
+            } else {
+                emptyState.classList.add('hidden');
+                
+                filtered.forEach(item => {
+                    const card = document.createElement('div');
+                    card.className = "bg-white rounded-2xl border border-stone-200/80 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col overflow-hidden group hover:-translate-y-1";
+
+                    const isAudio = item.type === 'audio/mpeg';
+                    const isPdf = item.type === 'application/pdf';
+                    const isPlayingThis = isAudio && currentAudioId === item.id && !mainAudio.paused;
+
+                    // Fallback image URL
+                    const fallbackImg = `https://placehold.co/400x300/7c2d12/ffffff?text=${encodeURIComponent(item.name.substring(0, 10))}`;
+
+                    card.innerHTML = `
+                        <!-- Cover Image Wrapper -->
+                        <div class="relative aspect-[4/3] bg-stone-100 overflow-hidden cursor-pointer flex-shrink-0" onclick="handleItemClick(${item.id})">
+                            <img src="${item.imageSrc}" alt="${item.name}" 
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                onerror="this.src='${fallbackImg}'">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity"></div>
+                            
+                            <!-- Category Badge -->
+                            <div class="absolute top-3 left-3">
+                                ${getTypeBadge(item.type)}
+                            </div>
+
+                            <!-- Play/Read Overlay Icon -->
+                            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                <div class="w-12 h-12 rounded-full ${isAudio ? 'bg-amber-500' : 'bg-dhamma-700'} text-white flex items-center justify-center shadow-lg transform scale-90 group-hover:scale-100 transition-transform">
+                                    <i class="fa-solid ${isAudio ? (isPlayingThis ? 'fa-pause' : 'fa-play') : (isPdf ? 'fa-book-open' : 'fa-arrow-up-right-from-square')} text-lg"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Content Details -->
+                        <div class="p-4 flex-1 flex flex-col justify-between space-y-3">
+                            <div class="space-y-1.5">
+                                <h3 class="font-bold text-stone-800 text-base leading-snug line-clamp-2 hover:text-dhamma-600 transition cursor-pointer" onclick="handleItemClick(${item.id})">
+                                    ${item.name}
+                                </h3>
+                                <p class="text-xs text-stone-500 line-clamp-2 font-light">
+                                    ${item.discription}
+                                </p>
+                            </div>
+
+                            <!-- Action Button -->
+                            <div class="pt-2 border-t border-stone-100 flex items-center justify-between">
+                                <button onclick="handleItemClick(${item.id})" class="w-full py-2 px-3 rounded-xl ${isAudio ? (isPlayingThis ? 'bg-amber-600 text-white' : 'bg-amber-50 text-amber-800 hover:bg-amber-100') : (isPdf ? 'bg-dhamma-50 text-dhamma-800 hover:bg-dhamma-100' : 'bg-blue-50 text-blue-700 hover:bg-blue-100')} text-xs font-semibold transition flex items-center justify-center space-x-2">
+                                    <i class="fa-solid ${isAudio ? (isPlayingThis ? 'fa-pause' : 'fa-circle-play') : (isPdf ? 'fa-book-reader' : 'fa-link')} text-sm"></i>
+                                    <span>${isAudio ? (isPlayingThis ? 'ກຳລັງຫຼິ້ນສຽງ...' : 'ຟັງສຽງອ່ານ') : (isPdf ? 'ອ່ານປຶ້ມ (PDF)' : 'ເບິ່ງເນື້ອຫາ')}</span>
+                                </button>
+                            </div>
+                        </div>
+                    `;
+
+                    productGrid.appendChild(card);
+                });
+            }
+        }
+
+        // Handle Item Click (Router logic for PDF, MP3, External Link)
+        function handleItemClick(id) {
+            const item = products.find(p => p.id === id);
+            if (!item) return;
+
+            if (item.type === 'application/pdf') {
+                openPdfModal(item);
+            } else if (item.type === 'audio/mpeg') {
+                playAudio(item);
+            } else {
+                window.open(item.link, '_blank');
+            }
+        }
+
+        // PDF Modal Viewer Logic
+        function openPdfModal(item) {
+            modalTitle.textContent = item.name;
+            modalExternalLink.href = item.link;
+            modalLoading.classList.remove('hidden');
+
+            // Set iframe src (Using PDF standard embedded viewer)
+            pdfFrame.src = item.link;
+
+            // Hide loading when iframe completes loading
+            pdfFrame.onload = function() {
+                modalLoading.classList.add('hidden');
+            };
+
+            readerModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        function closePdfModal() {
+            readerModal.classList.add('hidden');
+            pdfFrame.src = '';
+            document.body.style.overflow = '';
+        }
+
+        // Sticky Audio Player Logic
+        function playAudio(item) {
+            stickyAudioPlayer.classList.remove('translate-y-full');
+
+            if (currentAudioId === item.id) {
+                // Toggle Play/Pause if same track
+                if (mainAudio.paused) {
+                    mainAudio.play();
+                } else {
+                    mainAudio.pause();
+                }
+            } else {
+                // New track
+                currentAudioId = item.id;
+                playerTitle.textContent = item.name;
+                playerSubtitle.textContent = item.discription;
+                playerImg.src = item.imageSrc;
+                mainAudio.src = item.link;
+                
+                mainAudio.play().catch(e => console.log('Audio autoplay prevented:', e));
+            }
+
+            renderProducts(); // Refresh button states
+        }
+
+        // Format Time Helper (00:00)
+        function formatTime(seconds) {
+            if (isNaN(seconds)) return "00:00";
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins < 10 ? '0' : ''}${mins}:${secs < 10 ? '0' : ''}${secs}`;
+        }
+
+        // Audio Event Listeners
+        mainAudio.addEventListener('play', () => {
+            playPauseBtn.innerHTML = '<i class="fa-solid fa-pause text-sm"></i>';
+            playPauseBtn.classList.add('pulse-gold');
+            renderProducts();
+        });
+
+        mainAudio.addEventListener('pause', () => {
+            playPauseBtn.innerHTML = '<i class="fa-solid fa-play text-sm"></i>';
+            playPauseBtn.classList.remove('pulse-gold');
+            renderProducts();
+        });
+
+        mainAudio.addEventListener('timeupdate', () => {
+            if (mainAudio.duration) {
+                const pct = (mainAudio.currentTime / mainAudio.duration) * 100;
+                seekSlider.value = pct;
+                currentTimeEl.textContent = formatTime(mainAudio.currentTime);
+                durationTimeEl.textContent = formatTime(mainAudio.duration);
+            }
+        });
+
+        mainAudio.addEventListener('loadedmetadata', () => {
+            durationTimeEl.textContent = formatTime(mainAudio.duration);
+        });
+
+        mainAudio.addEventListener('ended', () => {
+            playPauseBtn.innerHTML = '<i class="fa-solid fa-play text-sm"></i>';
+            playPauseBtn.classList.remove('pulse-gold');
+            seekSlider.value = 0;
+            renderProducts();
+        });
+
+        // Player Controls
+        playPauseBtn.addEventListener('click', () => {
+            if (!mainAudio.src) return;
+            if (mainAudio.paused) mainAudio.play();
+            else mainAudio.pause();
+        });
+
+        seekSlider.addEventListener('input', () => {
+            if (mainAudio.duration) {
+                mainAudio.currentTime = (seekSlider.value / 100) * mainAudio.duration;
+            }
+        });
+
+        rewindBtn.addEventListener('click', () => {
+            mainAudio.currentTime = Math.max(0, mainAudio.currentTime - 10);
+        });
+
+        forwardBtn.addEventListener('click', () => {
+            if (mainAudio.duration) {
+                mainAudio.currentTime = Math.min(mainAudio.duration, mainAudio.currentTime + 10);
+            }
+        });
+
+        volumeSlider.addEventListener('input', () => {
+            mainAudio.volume = volumeSlider.value;
+            updateMuteIcon();
+        });
+
+        muteBtn.addEventListener('click', () => {
+            mainAudio.muted = !mainAudio.muted;
+            updateMuteIcon();
+        });
+
+        function updateMuteIcon() {
+            if (mainAudio.muted || mainAudio.volume === 0) {
+                muteBtn.innerHTML = '<i class="fa-solid fa-volume-xmark"></i>';
+            } else {
+                muteBtn.innerHTML = '<i class="fa-solid fa-volume-high"></i>';
+            }
+        }
+
+        // Close Audio Player
+        const hidePlayer = () => {
+            mainAudio.pause();
+            currentAudioId = null;
+            stickyAudioPlayer.classList.add('translate-y-full');
+            renderProducts();
+        };
+        closePlayerBtn.addEventListener('click', hidePlayer);
+        closePlayerDesktopBtn.addEventListener('click', hidePlayer);
+
+        // Search Input Events
+        searchInput.addEventListener('input', (e) => {
+            searchQuery = e.target.value;
+            clearSearchBtn.classList.toggle('hidden', searchQuery === '');
+            renderProducts();
+        });
+
+        clearSearchBtn.addEventListener('click', () => {
+            searchInput.value = '';
+            searchQuery = '';
+            clearSearchBtn.classList.add('hidden');
+            renderProducts();
+        });
+
+        // Filter Tab Events
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => {
+                    b.classList.remove('bg-dhamma-700', 'text-white', 'active');
+                    b.classList.add('bg-white', 'text-stone-700');
+                });
+
+                btn.classList.remove('bg-white', 'text-stone-700');
+                btn.classList.add('bg-dhamma-700', 'text-white', 'active');
+
+                currentFilter = btn.dataset.filter;
+                renderProducts();
+            });
+        });
+
+        // Close Modal Controls
+        closeModalBtn.addEventListener('click', closePdfModal);
+        
+        // Fullscreen Toggle for Modal
+        modalFullscreenBtn.addEventListener('click', () => {
+            if (!document.fullscreenElement) {
+                readerModal.requestFullscreen().catch(err => console.log(err));
+            } else {
+                document.exitFullscreen();
+            }
+        });
+
+        // Close Modal on Escape Key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !readerModal.classList.contains('hidden')) {
+                closePdfModal();
+            }
+        });
+
+        // Initial Render
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProducts();
+        });
+    </script>
+</body>
+</html>
